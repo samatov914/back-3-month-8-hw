@@ -166,12 +166,12 @@ class Personal(QWidget):
         cursor = self.db.connect.cursor()
         cursor.execute(f"SELECT balance FROM users WHERE login = '{login}';")
         balance = cursor.fetchall()[0][0]
-        if balance >= int(amount):
-            cursor.execute(f"UPDATE users SET communalka_water = communalka_water - '{amount}' WHERE login = '{login}';")
-            self.db.connect.commit()
-            self.result_2.setText("Успешно оплачено")
-        else:
-            self.result_2.setText("Недостаточно средств для оплаты")
+#         if balance >= int(amount):
+#             cursor.execute(f"UPDATE users SET communalka_water = communalka_water - '{amount}' WHERE login = '{login}';")
+#             self.db.connect.commit()
+#             self.result_2.setText("Успешно оплачено")
+#         else:
+#             self.result_2.setText("Недостаточно средств для оплаты")
 
 
 
