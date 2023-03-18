@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="payment">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>801</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 17pt &quot;Yu Gothic UI Semibold&quot;;
+color: white;
+background-color: red;
+border-radius: 10px;</string>
+   </property>
+   <property name="text">
+    <string>Платежи</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cash">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>30</y>
+     <width>201</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Yu Gothic UI Semibold&quot;;
+color: red;
+background-color: white;
+border-radius: 10px;</string>
+   </property>
+   <property name="text">
+    <string>0 KGS</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="gas">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>220</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Yu Gothic UI Semibold&quot;;
+color: red;
+background-color: white;
+border-radius: 10px;</string>
+   </property>
+   <property name="text">
+    <string>Газ</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="water">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>130</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Yu Gothic UI Semibold&quot;;
+color: red;
+background-color: white;
+border-radius: 10px;</string>
+   </property>
+   <property name="text">
+    <string>Вода</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="light">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>130</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Yu Gothic UI Semibold&quot;;
+color: red;
+background-color: white;
+border-radius: 10px;</string>
+   </property>
+   <property name="text">
+    <string>Свет</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="internet">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>130</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Yu Gothic UI Semibold&quot;;
+color: red;
+background-color: white;
+border-radius: 10px;</string>
+   </property>
+   <property name="text">
+    <string>Интернет</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="trash">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>220</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Yu Gothic UI Semibold&quot;;
+color: red;
+background-color: white;
+border-radius: 10px;</string>
+   </property>
+   <property name="text">
+    <string>Ош-Тазалык</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="id">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>350</y>
+     <width>341</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 17pt &quot;Yu Gothic UI Semibold&quot;;
+color: white;
+background-color: red;
+border-radius: 10px;</string>
+   </property>
+   <property name="placeholderText">
+    <string>id</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="send_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>510</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Yu Gothic UI Semibold&quot;;
+color: red;
+background-color: white;
+border-radius: 10px;</string>
+   </property>
+   <property name="text">
+    <string>Отправить</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="result_2">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>290</y>
+     <width>671</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Yu Gothic UI Semibold&quot;;
+color: red;
+background-color: white;
+border-radius: 10px;</string>
+   </property>
+   <property name="text">
+    <string>Логин не рабочий</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="sum">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>420</y>
+     <width>341</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 17pt &quot;Yu Gothic UI Semibold&quot;;
+color: white;
+background-color: red;
+border-radius: 10px;</string>
+   </property>
+   <property name="placeholderText">
+    <string>Сумма</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -41,6 +41,7 @@ class SignUp(QWidget):
         try:
             cursor.execute(f"INSERT INTO users VALUES ('{login}', '{password}', '{email}', '{time.ctime()}', 0);")
             self.error.setText("Успешно")
+            self.close()
         except sqlite3.IntegrityError as s:
             print(s.args)
             if s.args == "('UNIQUE constraint failed: users.login',)":
@@ -58,14 +59,23 @@ class Personal(QWidget):
         loadUi('personal.ui', self)     
         self.username.setText(login)
         self.db = StartDB()
-        self.class_cursor = self.db.connect.cursor()
-        result = self.class_cursor.execute(f"SELECT balance FROM users WHERE login = '{login}';")
+        cursor = self.db.connect.cursor()
+        result = cursor.execute(f"SELECT balance FROM users WHERE login = '{login}';")
         self.balance.setText(f"{result.fetchall()[0][0]} KGS")
         self.make.clicked.connect(self.make_money)
         self.hide_transfer()
+        self.hide_payment_buttons()
+        self.hide_payment()
         self.transfer.clicked.connect(self.user_transfer)
         self.send.clicked.connect(self.user_transfer)
-        self.class_cursor.connection.commit()
+        self.payment.clicked.connect(self.payment_1)
+        cursor.connection.commit()
+
+    def hide_buttons(self):
+        self.make.hide()
+        self.transfer.hide()
+        self.payment.hide()
+        self.history.hide()
 
     def hide_transfer(self):
         self.result.hide()
@@ -74,16 +84,38 @@ class Personal(QWidget):
         self.send.hide()
 
     def show_transfer(self):
-        self.result.show()
         self.input_login.show()
         self.amount.show()
         self.send.show()
+
+    def hide_payment(self):
+        self.result_2.hide()
+        self.amount_2.hide()
+        self.send_2.hide()
+
+    def hide_payment_buttons(self):
+        self.water.hide()
+        self.internet.hide()
+        self.gas.hide()
+        self.trashnyak.hide()
+        self.electricity.hide()
+
+    def show_payment_buttons(self):
+        self.water.show()
+        self.internet.show()
+        self.gas.show()
+        self.trashnyak.show()
+        self.electricity.show()    
+
+    def show_payment(self):
+        self.result_2.show()
+        self.amount_2.show()
+        self.send_2.show()
 
     def update_balance(self):
         cursor = self.db.connect.cursor()
         result = cursor.execute(f"SELECT balance FROM users WHERE login = '{self.login}';")
         self.balance.setText(f"{result.fetchall()[0][0]} KGS")
-        print(result)
     
     def make_money(self):
         cursor = self.db.connect.cursor()
@@ -108,14 +140,40 @@ class Personal(QWidget):
                 cursor.execute(f"UPDATE users SET balance = balance + {amount} WHERE login = '{input_login}';")
                 self.db.connect.commit()
                 self.update_balance()
-                self.result.hide()
+                self.result.show()
                 self.result.setText("Успешно")
             else:
-                self.result.show()
-                self.result.setText("Недостаточно денег")
-        elif result == [] and input_login and amount:
+                self.result.show()  
+                self.result.setText("Недостаточно средств для перевода.")        
+        elif result  == [] and input_login and amount:
             self.result.show()
-            self.result.setText("Такого пользователя не существует")
+            self.result.setText("Такого нет.")
+
+    def payment_1(self):
+        self.show_payment_buttons()
+        self.hide_buttons()
+        self.water.clicked.connect(self.waters)
+        self.send_2.clicked.connect(self.waters)
+
+    def waters(self):
+        self.show_payment()
+        self.hide_payment_buttons()
+        login = self.username.text()
+        self.result_2.hide()
+        amount = self.amount_2.text()
+        print(amount)
+        
+        cursor = self.db.connect.cursor()
+        cursor.execute(f"SELECT balance FROM users WHERE login = '{login}';")
+        balance = cursor.fetchall()[0][0]
+        if balance >= int(amount):
+            cursor.execute(f"UPDATE users SET communalka_water = communalka_water - '{amount}' WHERE login = '{login}';")
+            self.db.connect.commit()
+            self.result_2.setText("Успешно оплачено")
+        else:
+            self.result_2.setText("Недостаточно средств для оплаты")
+
+
 
 class Bank(QMainWindow):
     def __init__(self):
@@ -148,12 +206,29 @@ class Bank(QMainWindow):
             self.error.setText("Ok")
             self.personal = Personal(login)
             self.personal.show()
+            self.close()
         else:
             self.show_error()
             self.error.setText("Неправильные данные")
+
+# class Payment(QWidget):
+#     def __init__(self):
+#         super(Payment, self).__init__()
+#         loadUi('payment.ui',self)
+#         self.hide_error()
+#         self.db = StartDB()
+#         self.personal.clicked.connect(self.payment)
+        
+#     def payments(self):
+#         water = self.water.text()
+#         light = self.light.text()
+#         internet = self.internet.text()
+#         trash = self.trash.text()
+#         gas = self.gas.text()
+
+
 
 app = QApplication(sys.argv)
 bank = Bank()
 bank.show()
 app.exec_()
-print("hi")
